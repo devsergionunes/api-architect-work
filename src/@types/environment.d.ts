@@ -6,6 +6,9 @@ declare namespace NodeJS {
     //	Parâmetros Gerais do sistema
     API_PORT: number;
 
+    // JWT
+    JWT_SECRET: string;
+
     //	Database
     DB_DATA_BASE: string;
     DB_USER: string;

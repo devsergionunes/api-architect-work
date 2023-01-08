@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { AuthModule } from './app/auth/auth.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './app/users/users.module';
 import 'dotenv/config';
@@ -15,6 +16,7 @@ import 'dotenv/config';
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
+    AuthModule,
     UsersModule,
   ],
   controllers: [],

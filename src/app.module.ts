@@ -1,8 +1,9 @@
+import 'dotenv/config';
 import { Module } from '@nestjs/common';
 import { AuthModule } from './app/auth/auth.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { ArchitectsModule } from './app/architects/architects.module';
 import { UsersModule } from './app/users/users.module';
-import 'dotenv/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import 'dotenv/config';
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
+    ArchitectsModule,
     AuthModule,
     UsersModule,
   ],

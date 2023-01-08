@@ -20,6 +20,9 @@ export class UsersEntity {
   @Column({ type: 'varchar', length: 255 })
   password: string;
 
+  @Column({ name: 'type_profile', type: 'int' })
+  typeProfile: number;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
 

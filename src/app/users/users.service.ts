@@ -5,23 +5,30 @@ import { SHA256 } from 'crypto-js';
 import { CreateUserDto } from './dtos/createUserDto';
 import { UpdateUserDto } from './dtos/updateUserDto';
 import { UsersEntity } from './entity/users.entity';
+import { ArchitectsService } from '../architects/architects.service';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(UsersEntity)
     private readonly usersRepository: Repository<UsersEntity>,
+    private readonly architectsService: ArchitectsService,
   ) {}
 
   async findAll(): Promise<UsersEntity[]> {
     return await this.usersRepository.find();
   }
 
-  async findOne(id: number): Promise<UsersEntity> {
+  async findOne(id: number): Promise<any> {
     try {
-      return await this.usersRepository.findOneOrFail({
+      const user = await this.usersRepository.findOneOrFail({
         where: { id: id },
       });
+      delete user.password;
+      if (Number(user.typeProfile) === 1) return { user };
+
+      const architect = await this.architectsService.fundByUser();
+      return { user, architect };
     } catch (error) {
       throw new NotFoundException(error.message);
     }
@@ -43,7 +50,16 @@ export class UsersService {
       ...user,
       password,
     };
-    return await this.usersRepository.save(newUser);
+
+    const userCreated = await this.usersRepository.save(newUser);
+
+    if (Number(user.typeProfile) === 1) {
+      return userCreated;
+    } else {
+      // create architect
+      await this.architectsService.ceateArchitects(userCreated);
+      return userCreated;
+    }
   }
 
   async update(id: number, user: UpdateUserDto): Promise<any> {

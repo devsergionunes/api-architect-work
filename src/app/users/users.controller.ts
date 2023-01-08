@@ -10,6 +10,8 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwtauth.guard';
+import { CreateUserDto } from './dtos/createUserDto';
+import { UpdateUserDto } from './dtos/updateUserDto';
 import { UsersService } from './users.service';
 
 @Controller('api/v1/users')
@@ -23,7 +25,7 @@ export class UsersController {
   }
 
   @Post()
-  async create(@Body() user) {
+  async create(@Body() user: CreateUserDto) {
     return await this.usersService.create(user);
   }
 
@@ -35,7 +37,7 @@ export class UsersController {
 
   @UseGuards(JwtAuthGuard)
   @Put(':id')
-  async update(@Param('id') id: number, @Body() user) {
+  async update(@Param('id') id: number, @Body() user: UpdateUserDto) {
     return await this.usersService.update(id, user);
   }
 

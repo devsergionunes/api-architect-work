@@ -35,4 +35,8 @@ export class UsersEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   @ApiProperty()
   updatedAt: string;
+
+  constructor(partial: Partial<UsersEntity>) {
+    Object.assign(this, partial);
+  }
 }

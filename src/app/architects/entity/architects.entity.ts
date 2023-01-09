@@ -12,7 +12,7 @@ import {
 @Entity({ name: 'architects' })
 export class ArchitectsEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   // relation with users
   @OneToOne(() => UsersEntity)

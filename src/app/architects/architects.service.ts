@@ -15,16 +15,16 @@ export class ArchitectsService {
     return await this.architectsRepository.find();
   }
 
-  async findOne(id: number): Promise<ArchitectsEntity> {
+  async findOne(id: string): Promise<ArchitectsEntity> {
     try {
-      const architect = await this.architectsRepository.findOneOrFail({
+      const architect = await this.architectsRepository.findOne({
         where: {
           id: id,
         },
       });
       return architect;
     } catch (error) {
-      throw new NotFoundException();
+      throw new NotFoundException("Architect doesn't exist");
     }
   }
 

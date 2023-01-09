@@ -5,7 +5,11 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      skipMissingProperties: true,
+    }),
+  );
   await app.listen(process.env.API_PORT);
 }
 bootstrap();

@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { AuthModule } from './app/auth/auth.module';
 import { ArchitectsModule } from './app/architects/architects.module';
 import { UsersModule } from './app/users/users.module';
+import { SolicitationModule } from './app/solicitation/solicitation.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
@@ -17,6 +18,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
+    SolicitationModule,
     ArchitectsModule,
     AuthModule,
     UsersModule,

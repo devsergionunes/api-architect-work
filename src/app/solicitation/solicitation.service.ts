@@ -72,7 +72,8 @@ export class SolicitationService {
       user: user.user,
     };
 
-    return await this.solicitationsEntity.insert(newSolicitation);
+    await this.solicitationsEntity.insert(newSolicitation);
+    return newSolicitation;
   }
 
   async update(

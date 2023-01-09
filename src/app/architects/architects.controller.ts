@@ -9,7 +9,6 @@ export class ArchitectsController {
   @UseGuards(JwtAuthGuard)
   @Get()
   async index() {
-    console.log('index');
     return await this.architectsService.findAll();
   }
 

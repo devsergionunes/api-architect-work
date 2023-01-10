@@ -6,7 +6,7 @@
 
 ## Introdução:
 
-A ideia do projeto é criar uma plataforma para arquitetos, aonde os clientes possam solicitar orçamentos de projetos de arquitetura, e os arquitetos possam visualizar as solicitações e responder se aceitam ou não o projeto.
+A ideia do projeto é criar api para uma plataforma de arquitetos, aonde os clientes possam solicitar orçamentos de projetos de arquitetura, e os arquitetos possam visualizar as solicitações e responder se aceitam ou não o projeto.
 
 ## Funcionalidades:
 

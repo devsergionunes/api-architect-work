@@ -12,7 +12,9 @@ export class ArchitectsService {
   ) {}
 
   async findAll(): Promise<ArchitectsEntity[]> {
-    return await this.architectsRepository.find();
+    return await this.architectsRepository.find({
+      relations: ['user'],
+    });
   }
 
   async findOne(id: string): Promise<ArchitectsEntity> {

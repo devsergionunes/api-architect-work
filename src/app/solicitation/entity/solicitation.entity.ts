@@ -50,4 +50,8 @@ export class SolicitationsEntity {
   @UpdateDateColumn({ name: 'updated_at' })
   @ApiProperty()
   updatedAt: string;
+
+  constructor(partial?: Partial<SolicitationsEntity>) {
+    Object.assign(this, partial);
+  }
 }

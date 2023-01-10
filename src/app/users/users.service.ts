@@ -62,11 +62,11 @@ export class UsersService {
     }
   }
 
-  async update(id: number, user: UpdateUserDto): Promise<any> {
+  async update(id: string, user: UpdateUserDto): Promise<any> {
     return await this.usersRepository.update(id, user);
   }
 
-  async delete(id: number): Promise<any> {
+  async delete(id: string): Promise<any> {
     return await this.usersRepository.delete(id);
   }
 

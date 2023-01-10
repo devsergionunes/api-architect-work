@@ -87,7 +87,7 @@ export class UsersController {
     status: 401,
     description: 'Unauthorized',
   })
-  async update(@Param('id') id: number, @Body() user: UpdateUserDto) {
+  async update(@Param('id') id: string, @Body() user: UpdateUserDto) {
     return await this.usersService.update(id, user);
   }
 
@@ -103,7 +103,7 @@ export class UsersController {
     description: 'Unauthorized',
   })
   @ApiOperation({ summary: 'Delete a user' })
-  async destroy(@Param('id') id: number) {
+  async destroy(@Param('id') id: string) {
     return await this.usersService.delete(id);
   }
 }

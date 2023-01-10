@@ -5,15 +5,15 @@ export class UpdateSolicitationDto {
   @IsNotEmpty()
   @IsString()
   @ApiPropertyOptional()
-  readonly description: string;
+  readonly description?: string;
 
   @IsNotEmpty()
   @IsDateString()
   @ApiPropertyOptional()
-  readonly dtInitial: string;
+  readonly dtInitial?: string;
 
   @IsNotEmpty()
   @IsIn([1, 2, 3, 4, '1', '2', '3', '4'])
   @ApiPropertyOptional({ enum: [1, 2, 3, 4] })
-  readonly status: string;
+  readonly status?: string;
 }

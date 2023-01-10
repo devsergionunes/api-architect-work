@@ -36,7 +36,7 @@ export class UsersEntity {
   @ApiProperty()
   updatedAt: string;
 
-  constructor(partial: Partial<UsersEntity>) {
+  constructor(partial?: Partial<UsersEntity>) {
     Object.assign(this, partial);
   }
 }

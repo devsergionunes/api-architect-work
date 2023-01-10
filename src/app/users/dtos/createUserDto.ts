@@ -26,10 +26,10 @@ export class CreateUserDto {
   @IsNotEmpty()
   @IsString()
   @ApiPropertyOptional()
-  readonly description: string;
+  readonly description?: string;
 
   @IsNotEmpty()
   @IsString()
   @ApiPropertyOptional()
-  readonly type: string;
+  readonly type?: string;
 }

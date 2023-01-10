@@ -1,73 +1,105 @@
+# API Architect Work
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Introdução:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+A ideia do projeto é criar api para uma plataforma de arquitetos, aonde os clientes possam solicitar orçamentos de projetos de arquitetura, e os arquitetos possam visualizar as solicitações e responder se aceitam ou não o projeto.
 
-## Description
+## Funcionalidades:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- Cadastro de usuário
+- Cadastro de arquiteto
+- Login de usuário e arquiteto
+- Cadastro de solicitação
+- Listagem de solicitações
+- Atualização solicitação
+- Exclusão solicitação
+- Responder solicitação
 
-## Installation
+## Tecnologias:
 
-```bash
-$ npm install
-```
+### Nest:
 
-## Running the app
+- [Nest](https://github.com/nestjs/nest).
 
-```bash
-# development
-$ npm run start
+### TypeScript:
 
-# watch mode
-$ npm run start:dev
+- [TypeScript](https://www.typescriptlang.org/)
 
-# production mode
-$ npm run start:prod
-```
+### TypeORM:
 
-## Test
+- [TypeORM](https://typeorm.io/)
 
-```bash
-# unit tests
-$ npm run test
+### Swagger:
 
-# e2e tests
-$ npm run test:e2e
+- [Swagger](https://swagger.io/)
 
-# test coverage
-$ npm run test:cov
-```
+### Passport:
 
-## Support
+- [Passport](http://www.passportjs.org/)
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Class Validator:
 
-## Stay in touch
+- [Class Validator](https://github.com/nestjs/class-validator)
+<hr>
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## BASE DE DADOS:
 
-## License
+### [POSTGRESQL](https://www.postgresql.org/):
 
-Nest is [MIT licensed](LICENSE).
+- [Documentação](https://www.postgresql.org/docs/)
+- Estou usando uma imagem docker do postgres para rodar o banco de dados localmente. segue o link abaixo com o tutorial de como baixar a imagem docker do postgres.
+- [Tutorial para download da imagem docker do postgres](https://felixgilioli.medium.com/como-rodar-um-banco-de-dados-postgres-com-docker-6aecf67995e1)
+
+<hr>
+
+## DOCUMENTAÇÃO:
+
+- Estou usando o swagger para documentar a api.
+- Rota para a documentação da api esta em `/swagger`
+
+## INICIANDO O PROJETO:
+
+### clone o projeto:
+
+<pre>
+  git clone https://github.com/devsergionunes/api-architect-work.git
+</pre>
+
+### Instalar dependencias:
+
+<pre>
+ npm install
+</pre>
+
+### Iniciar o banco de dados:
+
+<pre>
+ docker run -p 5432:5432 -e POSTGRES_PASSWORD=1234 postgres
+</pre>
+
+### Variaveis de ambiente (arquivo .env):
+
+- Crie um arquivo .env na raiz do projeto e adicione as variaveis de ambiente.
+- Você pode usar o arquivo .env.example como base. Veja o exemplo abaixo:
+<pre>
+API_PORT=3333
+
+JWT_SECRET= 'minhachavesecreta'
+
+DB_DATA_BASE= postgres
+DB_USER= postgres
+DB_PASSWORD= 1234
+DB_HOST= localhost
+DB_PORT= 5432
+
+</pre>
+
+### Iniciar o projeto:
+
+<pre>
+npm run start:dev
+</pre>

@@ -12,7 +12,15 @@ export class ArchitectsService {
   ) {}
 
   async findAll(): Promise<ArchitectsEntity[]> {
-    return await this.architectsRepository.find();
+    const response = await this.architectsRepository.find({
+      relations: ['user'],
+    });
+    if (!response.length) return [];
+    const newData = response.map((architect) => {
+      delete architect.user.password;
+      return architect;
+    });
+    return newData;
   }
 
   async findOne(id: string): Promise<ArchitectsEntity> {
@@ -21,6 +29,7 @@ export class ArchitectsService {
         where: {
           id: id,
         },
+        relations: ['user'],
       });
       return architect;
     } catch (error) {

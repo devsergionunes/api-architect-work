@@ -7,6 +7,7 @@ import {
   Param,
   Post,
   Put,
+  Request,
   UseGuards,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
@@ -19,26 +20,25 @@ import { ShowUserWagger } from './swagger/showWagger';
 import { UpdateUserWagger } from './swagger/updateWagger';
 import { UsersService } from './users.service';
 
-@Controller('api/v1/users')
-@ApiTags('Users')
+@Controller('api/v1/user')
+@ApiTags('User')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  @ApiOperation({ summary: 'Search all registered users' })
+  @ApiOperation({ summary: 'Returns the data of the logged in user' })
   @ApiResponse({
     status: 200,
-    description: "Returns a list of user's data",
+    description: 'Returns the data of the logged in user',
     type: IndexUserWagger,
-    isArray: true,
   })
   @ApiResponse({
     status: 401,
     description: 'Unauthorized',
   })
-  async index() {
-    return await this.usersService.findAll();
+  async index(@Request() req) {
+    return await this.usersService.findOne(req.user.userId);
   }
 
   @Post()

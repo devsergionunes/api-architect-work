@@ -16,7 +16,12 @@ export class UsersService {
   ) {}
 
   async findAll(): Promise<UsersEntity[]> {
-    return await this.usersRepository.find();
+    const response = await this.usersRepository.find();
+    if (response.length === 0) return [];
+    return response.map((user) => {
+      delete user.password;
+      return user;
+    });
   }
 
   async findOne(id: string): Promise<any> {
@@ -52,6 +57,7 @@ export class UsersService {
     };
 
     const userCreated = await this.usersRepository.save(newUser);
+    delete userCreated.password;
 
     if (Number(user.typeProfile) === 1) {
       return userCreated;

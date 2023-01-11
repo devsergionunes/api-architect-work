@@ -63,6 +63,7 @@ export class SolicitationService {
       this.architectsService.findOne(idArchitect),
     ]);
 
+    delete user.user.password;
     const newSolicitation = {
       description,
       ...(dtInitial && {
